@@ -51,7 +51,7 @@ class Demo
 			$language_short_name = 'en';
 		}
 
-		$this->easylang = new EasyLang('',$language_short_name);
+		$this->easylang = new EasyLang('languages/',$language_short_name);
 	}
 
 	/**
