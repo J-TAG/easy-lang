@@ -17,9 +17,11 @@ First include EasyLang file:
 
 Then you should make a .ini file that can be found in 'languages' folder of demo and name it as its language short
 name. for example we create a file with name of 'en.ini' for english language.
+
 Now we can make an object from Easy Lang like this:
 
 <code>$languages_path = 'languages/'; // Don't forget '/'</code>
+
 <code>$language_short_name = 'en';</code>
 
 <code>$translate = new EasyLang( $languages_path, $language_short_name );</code>
