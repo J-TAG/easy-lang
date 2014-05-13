@@ -13,7 +13,7 @@
  *
  * First include EasyLang file:
  *
- * include_once( 'easylang.php' );
+ * require_once( 'easylang.php' );
  *
  * Then you should make a .ini file that can be found in 'languages' folder of demo and name it as its language short
  * name. for example we create a file with name of 'en.ini' for english language.
@@ -40,6 +40,7 @@
  *
  * Created by Hesam Gholami.
  * Date: 3/27/2014
+ * Last Update: 5/13/2014
  *
  * MIT Licensed.
  */
@@ -55,7 +56,15 @@ class EasyLang
 	 */
 	function __construct( $languages_path, $language_short_name )
 	{
-		$this->refresh_translates( $languages_path, $language_short_name );
+		$this->refreshTranslates( $languages_path, $language_short_name );
+	}
+
+	/**
+	 * @param $language_short_name
+	 */
+	public function changeLanguage($language_short_name)
+	{
+		$this->refreshTranslates($this->getLangPath(), $language_short_name);
 	}
 
 	/**
@@ -64,7 +73,7 @@ class EasyLang
 	 *
 	 * refresh texts of translates and also could change translate language
 	 */
-	public function refresh_translates( $languages_path, $language_short_name )
+	public function refreshTranslates( $languages_path, $language_short_name )
 	{
 		$this->setLang( $language_short_name );
 		$this->setLangPath( $languages_path );
@@ -85,7 +94,9 @@ class EasyLang
 	 */
 	public function getTranslate( $constant )
 	{
-		return $this->getAllTranslates()[$constant];
+		$tmp_trans = $this->getAllTranslates();
+
+		return isset($tmp_trans[$constant]) ? $tmp_trans[$constant]	: '**'.$constant.'**';
 	}
 
 	/**
@@ -97,7 +108,7 @@ class EasyLang
 	}
 
 	/**
-	 * @return string
+	 * @return mixed
 	 */
 	public function getAllTranslates()
 	{
