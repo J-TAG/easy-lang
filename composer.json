@@ -1,0 +1,21 @@
+{
+  "name": "puresoft/easy-lang",
+  "description": "A simple PHP class for creating pages with multiple languages",
+  "license": "MIT",
+  "keywords": [
+    "php",
+    "language",
+    "multi-language",
+    "easy",
+    "translate",
+    "localization"
+  ],
+  "homepage": "https://github.com/J-TAG/easy-lang",
+  "authors": [
+    {
+      "name": "Hesam Gholami",
+      "email": "hesamgholami@yahoo.com"
+    }
+  ],
+  "minimum-stability": "stable"
+}
