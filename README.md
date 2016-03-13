@@ -36,4 +36,4 @@ Now we can use this constant like this:
 
 # Demo Script
 
-There an `index.php` in project that contains an example to show how to use EasyLang in your code.
+There is an `index.php` in project that contains an example to show how to use EasyLang in your code.
