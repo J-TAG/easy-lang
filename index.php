@@ -1,8 +1,9 @@
 <?php
 
-
 // include EasyLang Class
 require_once('easylang.php');
+
+use puresoft\EasyLang;
 
 /**
  *

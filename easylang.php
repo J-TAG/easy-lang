@@ -1,5 +1,8 @@
 <?php
 
+namespace puresoft;
+use Exception;
+
 /**
  *
  * Easy Lang PHP Class.
