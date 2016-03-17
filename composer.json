@@ -10,7 +10,8 @@
     "multi-language",
     "easy",
     "translate",
-    "localization"
+    "localization",
+    "i18n"
   ],
   "authors": [
     {

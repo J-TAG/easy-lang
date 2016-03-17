@@ -1,6 +1,6 @@
 <?php
 
-namespace puresoft;
+namespace puresoft\easylang;
 use Exception;
 
 /**
@@ -16,26 +16,30 @@ use Exception;
  * ```php
  * $languages_path = 'languages/'; // Don't forget '/' at the end of path
  * $language_short_name = 'en';
- * $translate = new EasyLang( $languages_path, $language_short_name );
+ * $is_rtl = false; // This used for founding language direction
+ * $translate = new EasyLang( $languages_path, $language_short_name, $is_rtl );
  * ```
  *
  * @author Hesam Gholami <hesamgholami@yahoo.com>
  */
 class EasyLang
 {
-	private $lang = '';
-	private $lang_path = '';
-	private $translates = [];
+	protected $lang = '';
+	protected $lang_path = '';
+	protected $translates = [];
+	protected $is_rtl = false;
 
 	/**
 	 * Constructs new instance of EasyLang object with given language details.
 	 *
 	 * @param string $languages_path
 	 * @param string $language_short_name
+	 * @param bool $is_rtl
+	 * @throws Exception
 	 */
-	function __construct($languages_path, $language_short_name)
+	function __construct($languages_path, $language_short_name, $is_rtl = false)
 	{
-		$this->refreshTranslates($languages_path, $language_short_name);
+		$this->refreshTranslates($languages_path, $language_short_name, $is_rtl);
 	}
 
 	/**
@@ -43,12 +47,14 @@ class EasyLang
 	 *
 	 * @param string $languages_path
 	 * @param string $language_short_name *
+	 * @param bool $is_rtl
 	 * @throws Exception
 	 */
-	public function refreshTranslates($languages_path, $language_short_name)
+	public function refreshTranslates($languages_path, $language_short_name, $is_rtl = false)
 	{
 		$this->setLang($language_short_name);
 		$this->setLangPath($languages_path);
+		$this->setIsRtl($is_rtl);
 
 		// Make path of translate file: PATH + [LANGUAGE SHORT NAME] + .ini
 		$file_path = $this->getLangPath() . $this->getLang() . '.ini';
@@ -143,5 +149,25 @@ class EasyLang
 	public function getAllTranslates()
 	{
 		return $this->translates;
+	}
+
+	/**
+	 * Whether the current using language direction is right to left or not.
+	 *
+	 * @return boolean
+	 */
+	public function isIsRtl()
+	{
+		return $this->is_rtl;
+	}
+
+	/**
+	 * Sets current language direction.
+	 *
+	 * @param boolean $is_rtl
+	 */
+	protected function setIsRtl($is_rtl)
+	{
+		$this->is_rtl = $is_rtl;
 	}
 }

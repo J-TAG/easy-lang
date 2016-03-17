@@ -1,9 +1,9 @@
 <?php
 
-// include EasyLang Class
-require_once('easylang.php');
+// Include EasyLang Class
+require_once 'easylang.php';
 
-use puresoft\EasyLang;
+use puresoft\easylang\EasyLang;
 
 /**
  *
@@ -26,11 +26,13 @@ class Demo
 		$part = explode("/", $route);
 
 		$language_short_name = 'en';
+		$is_rtl = false;
 
 		if (isset($part[1])) {
 			switch ($part[1]) {
 				case 'fa':
 					$language_short_name = 'fa';
+					$is_rtl = true;
 					break;
 
 				case 'de':
@@ -44,7 +46,7 @@ class Demo
 		}
 
 		// Start EasyLang with founded language in URL
-		$this->easylang = new EasyLang('languages/', $language_short_name);
+		$this->easylang = new EasyLang('languages/', $language_short_name, $is_rtl);
 	}
 
 	/**
@@ -55,6 +57,16 @@ class Demo
 	public function getTranslate($constant)
 	{
 		return $this->easylang->getTranslate($constant);
+	}
+
+	/**
+	 * Returns current language direction as 'rtl' or 'ltr'.
+	 *
+	 * @return string
+	 */
+	public function getDirection()
+	{
+		return $this->easylang->isIsRtl() ? 'rtl' : 'ltr';
 	}
 }
 
@@ -84,7 +96,7 @@ $demo = new Demo();
 	} ?>
 </p>
 
-<div class="live-example">
+<div class="live-example" dir="<?= $demo->getDirection() ?>">
 	<p><?= $demo->getTranslate('HELLO_WORLD') ?></p>
 
 	<p><?= $demo->getTranslate('HOW_ARE_YOU') ?></p>
