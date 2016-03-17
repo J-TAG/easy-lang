@@ -66,7 +66,7 @@ class Demo
 	 */
 	public function getDirection()
 	{
-		return $this->easylang->isIsRtl() ? 'rtl' : 'ltr';
+		return $this->easylang->isRtl() ? 'rtl' : 'ltr';
 	}
 }
 

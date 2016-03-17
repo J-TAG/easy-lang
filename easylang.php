@@ -69,6 +69,16 @@ class EasyLang
 	}
 
 	/**
+	 * Sets current language direction.
+	 *
+	 * @param boolean $is_rtl
+	 */
+	protected function setIsRtl($is_rtl)
+	{
+		$this->is_rtl = $is_rtl;
+	}
+
+	/**
 	 * Returns current language directory path.
 	 *
 	 * @return string
@@ -156,18 +166,8 @@ class EasyLang
 	 *
 	 * @return boolean
 	 */
-	public function isIsRtl()
+	public function isRtl()
 	{
 		return $this->is_rtl;
-	}
-
-	/**
-	 * Sets current language direction.
-	 *
-	 * @param boolean $is_rtl
-	 */
-	protected function setIsRtl($is_rtl)
-	{
-		$this->is_rtl = $is_rtl;
 	}
 }
