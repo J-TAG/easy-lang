@@ -6,6 +6,11 @@ By using this class you can use multiple languages in PHP pages.
 Languages are saved in a UTF-8 `.ini` file and will load by their language short names.
 This class provided with Getters and Setters, so you can easily customize it.
 
+# Installation
+
+You can simply download or clone this project or if you want, you can install EasyLang through composer:
+`composer require puresoft/easy-lang`
+
 # Usage:
 
 First include EasyLang file:
